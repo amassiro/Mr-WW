@@ -221,8 +221,10 @@ void TrainRegression( TString myMethodList = "", TString outfileName = "TMVAReg.
 // 	factory->BookMethod( TMVA::Types::kMLP, "MLP", "!H:!V:VarTransform=N:NeuronType=tanh:NCycles=200:HiddenLayers=N+10:TestRate=6:TrainingMethod=BFGS:Sampling=0.3:SamplingEpoch=0.8:ConvergenceImprove=1e-6:ConvergenceTests=15" );
 // 	factory->BookMethod( TMVA::Types::kMLP, "MLP", "!H:!V:VarTransform=G,N:NeuronType=tanh:NCycles=200:HiddenLayers=N+5:TestRate=6:TrainingMethod=BFGS:Sampling=0.3:SamplingEpoch=0.8:ConvergenceImprove=1e-6:ConvergenceTests=15" );
 // 	factory->BookMethod( TMVA::Types::kMLP, "MLP", "!H:!V:VarTransform=G,N:NeuronType=tanh:NCycles=100:HiddenLayers=N+5:TestRate=6:TrainingMethod=BFGS:Sampling=0.3:SamplingEpoch=0.8:ConvergenceImprove=1e-6:ConvergenceTests=15" );
-	factory->BookMethod( TMVA::Types::kMLP, "MLP", "!H:!V:VarTransform=G,N:NeuronType=tanh:NCycles=200:HiddenLayers=N+7:TestRate=6:TrainingMethod=BFGS:Sampling=0.3:SamplingEpoch=0.8:ConvergenceImprove=1e-6:ConvergenceTests=15" );
-	
+//      factory->BookMethod( TMVA::Types::kMLP, "MLP", "!H:!V:VarTransform=G,N:NeuronType=tanh:NCycles=200:HiddenLayers=N+7:TestRate=6:TrainingMethod=BFGS:Sampling=0.3:SamplingEpoch=0.8:ConvergenceImprove=1e-6:ConvergenceTests=15" );
+//         factory->BookMethod( TMVA::Types::kMLP, "MLP", "!H:!V:NeuronType=tanh:NCycles=400:HiddenLayers=N+7:TestRate=6:TrainingMethod=BFGS:Sampling=0.3:SamplingEpoch=0.8:ConvergenceImprove=1e-6:ConvergenceTests=15" );
+        factory->BookMethod( TMVA::Types::kMLP, "MLP", "!H:!V:NeuronType=tanh:NCycles=100:HiddenLayers=N+7:TestRate=6:TrainingMethod=BFGS:Sampling=0.3:SamplingEpoch=0.8:ConvergenceImprove=1e-6:ConvergenceTests=15" );
+        
 	
    // Support Vector Machine
    if (Use["SVM"])
@@ -237,8 +239,11 @@ void TrainRegression( TString myMethodList = "", TString outfileName = "TMVAReg.
 // 	factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:NTrees=100:nEventsMin=5:BoostType=AdaBoostR2:SeparationType=RegressionVariance:PruneMethod=CostComplexity:PruneStrength=30" );
 // 	factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:VarTransform=G,N:NTrees=100:nEventsMin=3:BoostType=AdaBoostR2:SeparationType=RegressionVariance:PruneMethod=CostComplexity:PruneStrength=30" );
 //         factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:NTrees=300:nEventsMin=5:BoostType=AdaBoostR2:SeparationType=RegressionVariance:PruneMethod=CostComplexity:PruneStrength=30" );
-        factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:NTrees=400:nEventsMin=3:BoostType=AdaBoostR2:SeparationType=RegressionVariance:PruneMethod=CostComplexity:PruneStrength=30" );
-        
+//         factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:NTrees=400:nEventsMin=3:BoostType=AdaBoostR2:SeparationType=RegressionVariance:PruneMethod=CostComplexity:PruneStrength=30" );
+//         factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:NTrees=2000:nEventsMin=3:BoostType=AdaBoostR2:SeparationType=RegressionVariance:PruneMethod=CostComplexity:PruneStrength=30" );
+     factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:UseBaggedGrad:GradBaggingFraction=0.5:MaxDepth=3:NNodesMax=15" );
+//     factory->BookMethod( TMVA::Types::kBDT, "BDT","!H:!V:NTrees=200:BoostType=Grad:Shrinkage=0.1:UseBaggedGrad:GradBaggingFraction=0.5:MaxDepth=3:NNodesMax=15" );
+    
    if (Use["BDTG"])
 //      factory->BookMethod( TMVA::Types::kBDT, "BDTG","!H:!V:NTrees=2000::BoostType=Grad:Shrinkage=0.1:UseBaggedGrad:GradBaggingFraction=0.5:nCuts=20:MaxDepth=3:NNodesMax=15" );
      factory->BookMethod( TMVA::Types::kBDT, "BDTG","!H:!V:NTrees=2000::BoostType=Grad:Shrinkage=0.1:UseBaggedGrad:GradBaggingFraction=0.5:MaxDepth=3:NNodesMax=15" );

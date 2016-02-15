@@ -9,6 +9,7 @@ Setup:
 How:
 
     r99t TrainRegression.cxx\(\"BDT\"\)
+    r99t TrainRegression.cxx\(\"MLP\"\)
 
     r99t TMVAGui.C\(\"TMVAReg.root\"\)
 
@@ -45,6 +46,7 @@ Make input flat:
 Apply:
 
      cp /afs/cern.ch/user/a/amassiro/Framework/Mr-WW/weightsMassVariable0Jet/TMVARegression_BDT.weights.xml Gardener/python/data/mrww/
+     cp /afs/cern.ch/user/a/amassiro/Framework/Mr-WW/weightsMassVariable0Jet/TMVARegression_MLP.weights.xml Gardener/python/data/mrww/
      
      gardener.py  mrWWvarfiller \
                 /media/data/amassiro/LatinoTrees/MrWW/MCl2loose__hadd__l2tight/latino_MassSoup.root  \
@@ -54,6 +56,13 @@ Apply:
                 /media/data/amassiro/LatinoTrees/MrWW/MCl2loose__hadd__l2tight/latino_MassSoup_flat.root  \
                 /media/data/amassiro/LatinoTrees/MrWW/MCl2loose__hadd__l2tight/latino_MassSoup_filled.root
 
+     gardener.py  mrWWvarfiller \
+                --kind 0 \
+                /media/data/amassiro/LatinoTrees/MrWW/MCl2loose__hadd__l2tight/latino_MassSoup_flat.root  \
+                /media/data/amassiro/LatinoTrees/MrWW/MCl2loose__hadd__l2tight/latino_MassSoup_filled_MLP.root
+                
+                
+                
 Test:
 
     r99t /media/data/amassiro/LatinoTrees/MrWW/MCl2loose__hadd__l2tight/latino_MassSoup_filled.root
@@ -62,6 +71,7 @@ Test:
     latino->Draw("mrww1*mll:higgsLHEmass","weightMHflat")
     latino->Draw("mrww1*mll:higgsLHEmass","weightMHflat","colz")
     latino->Draw("mrww1:higgsLHEmass","weightMHflat","colz")
+    latino->Draw("mrww1/higgsLHEmass:higgsLHEmass","weightMHflat*(std_vector_lepton_pt[1]>20)","colz")
     
     
 Where:
@@ -70,3 +80,6 @@ Where:
     /home/amassiro/Cern/Code/HIG/Mr-WW
     
 
+
+    
+    
