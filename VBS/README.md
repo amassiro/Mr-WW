@@ -32,8 +32,8 @@ How:
     
 Where:
 
-    /afs/cern.ch/user/a/amassiro/Framework/Mr-WW
-    /home/amassiro/Cern/Code/HIG/Mr-WW
+    /afs/cern.ch/user/a/amassiro/work/Latinos/Framework/Mr-WW/VBS
+
     
 
 
